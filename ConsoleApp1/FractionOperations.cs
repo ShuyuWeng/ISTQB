@@ -14,6 +14,8 @@ namespace ConsoleApp1
 
         public FractionOperations(int numerator, int denominator)
         {
+            if (denominator == 0)
+                throw new ArgumentException("Denominator cannot be zero");
             Numerator = numerator;
             Denominator = denominator;
         }
@@ -27,7 +29,7 @@ namespace ConsoleApp1
 
         public static FractionOperations Subtract(FractionOperations f1, FractionOperations f2)
         {
-            int numerator = f1.Numerator * f1.Denominator - f2.Numerator * f2.Denominator;
+            int numerator = f1.Numerator * f2.Denominator - f2.Numerator * f1.Denominator;
             int denominator = f1.Denominator * f2.Denominator;
             int gcd = GCD(numerator, denominator);
             numerator /= gcd;
